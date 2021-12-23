@@ -1,113 +1,113 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chilee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/21 10:11:31 by chilee            #+#    #+#             */
-/*   Updated: 2021/12/22 11:47:43 by chilee           ###   ########.fr       */
+/*   Created: 2021/12/22 17:02:33 by chilee            #+#    #+#             */
+/*   Updated: 2021/12/23 18:09:30 by chilee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
-char	*ft_find_n(char *tmp, int fd)
+char	*ft_find_n(char *str, int fd)
 {
 	char	*buf;
 	int		v_ret;
-	
+
 	v_ret = 1;
-	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	buf = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!buf)
 		return (NULL);
-	while (v_ret != 0 && !ft_strchr(tmp, '\n'))
+	while (v_ret != 0 && !ft_strchr(str, '\n'))
 	{
 		v_ret = read(fd, buf, BUFFER_SIZE);
 		if (v_ret == -1)
-		{
+		{	
 			free(buf);
 			return (NULL);
-		}				
+		}
 		buf[v_ret] = '\0';
-		tmp = ft_strjoin(tmp, buf);
+		str = ft_strjoin(str, buf);
 	}
 	free(buf);
-	return (tmp);
+	return (str);
 }
 
 char	*ft_get_bf_n(char *str)
 {
-	char *line;
-	int	 i;
-	int	 j;
+	char	*line;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;
 	while (str[i] && str[i] != '\n')
 		i++;
 	if (str[i] == '\n')
-		line = malloc(sizeof(char) * (i + 2));
+		line = (char *)malloc(sizeof(char) * i + 2);
 	else
-		line = malloc(sizeof(char) * (i + 1));
-	while (str[j] && str[j] != '\n')
+		line = (char *)malloc(sizeof(char) * i + 1);
+	while (str[j] && str [j] != '\n')
 	{
 		line[j] = str[j];
-		j++; 
+		j++;
 	}
-	if (str[j] == '\n')
+	if(str[j] == '\n')
 	{
-		line[j] =  '\n';
+		line[j] = '\n';
 		j++;
 	}
 	line[j] = '\0';
 	return (line);
-}
+}	
 
-char 	*ft_get_af_n(char *str)
+char	*ft_get_af_n(char *str)
 {
-	char *tmp;
-	int i;
-	int j;
+	char	*line;
+	int		i;
+	int		j;
 
-	i = 0; 
+	i= 0;
 	while (str[i] && str[i] != '\n')
 		i++;
-	if (!str[i])
+	if(!str)
 	{
 		free(str);
 		return (NULL);
-	}	
-	tmp = malloc(sizeof(char) * (ft_strlen(str) - i) + 1);
+	}
+	line = (char *)malloc(sizeof(char) * (ft_strlen(str) - i) + 1);
 	i++;
 	j = 0;
-	while (str[i + j])
+	while ( j < ((int)ft_strlen(str) - i))
 	{
-		tmp[j] = str [i + j];
+		line[j] = str[i + j];
 		j++;
 	}
-	tmp[j] = '\0';
+	line[j] = '\0';
 	free(str);
-	return (tmp);
+	return (line);
 }
 
 char	*get_next_line(int fd)
 {
-	static char *tmp;
-	char		*line;
-	
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	static char *tmp[FOPEN_MAX];
+	char	*line;
+
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > FOPEN_MAX)
 		return (NULL);
-	tmp = ft_find_n(tmp, fd);
-	if (!tmp)
+	tmp[fd] = ft_find_n(tmp[fd], fd);
+	if (!tmp[fd])
 		return (NULL);
-	if (!tmp[0])
+	if (!tmp[fd][0])
 	{
-		free(tmp);
-		tmp = NULL;
+		free(tmp[fd]);
+		tmp[fd] = NULL;
 		return (NULL);
 	}
-	line = ft_get_bf_n(tmp);
-	tmp = ft_get_af_n(tmp);
-	return (line);	
+	line = ft_get_bf_n(tmp[fd]);
+	tmp[fd] = ft_get_af_n(tmp[fd]);
+	return (line);
 }
