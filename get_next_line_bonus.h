@@ -6,7 +6,7 @@
 /*   By: chilee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 16:47:03 by chilee            #+#    #+#             */
-/*   Updated: 2021/12/23 13:12:36 by chilee           ###   ########.fr       */
+/*   Updated: 2021/12/28 11:50:37 by chilee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
-# include <limits.h>
 
 char	*get_next_line(int fd);
 char	*ft_strdup(char *s);

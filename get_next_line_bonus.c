@@ -6,7 +6,7 @@
 /*   By: chilee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 17:02:33 by chilee            #+#    #+#             */
-/*   Updated: 2021/12/28 11:29:20 by chilee           ###   ########.fr       */
+/*   Updated: 2021/12/28 11:50:34 by chilee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,10 @@ char	*ft_get_af_n(char *str)
 
 char	*get_next_line(int fd)
 {
-	static char	*tmp[FOPEN_MAX];
+	static char	*tmp[1024];
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > FOPEN_MAX)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 1024)
 		return (NULL);
 	tmp[fd] = ft_find_n(tmp[fd], fd);
 	if (!tmp[fd])
