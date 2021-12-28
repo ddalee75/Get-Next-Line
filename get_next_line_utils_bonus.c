@@ -6,7 +6,7 @@
 /*   By: chilee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 11:09:44 by chilee            #+#    #+#             */
-/*   Updated: 2021/12/23 18:09:32 by chilee           ###   ########.fr       */
+/*   Updated: 2021/12/28 11:29:16 by chilee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 size_t	ft_strlen(char *s)
 {
 	int	i;
-	
+
 	i = 0;
 	while (s[i])
 		i++;
@@ -40,19 +40,19 @@ int	ft_strchr(char *s, int c)
 
 char	*ft_strdup(char *s)
 {
-	int		 i;
+	int		i;
 	char	*dest;
-	
+
 	i = 0;
 	dest = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (!dest)
 		return (NULL);
-	while (s[i]) 
+	while (s[i])
 	{
 		dest[i] = s[i];
 		i++;
 	}
-	dest[i] ='\0';
+	dest[i] = '\0';
 	return (dest);
 }
 
@@ -82,4 +82,4 @@ char	*ft_strjoin(char *s1, char *s2)
 	dest[i + j] = '\0';
 	free(s1);
 	return (dest);
-} 
+}

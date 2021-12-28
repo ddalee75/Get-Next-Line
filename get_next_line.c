@@ -6,7 +6,7 @@
 /*   By: chilee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 10:11:31 by chilee            #+#    #+#             */
-/*   Updated: 2021/12/22 11:47:43 by chilee           ###   ########.fr       */
+/*   Updated: 2021/12/28 11:19:17 by chilee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_find_n(char *tmp, int fd)
 {
 	char	*buf;
 	int		v_ret;
-	
+
 	v_ret = 1;
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
@@ -38,9 +38,9 @@ char	*ft_find_n(char *tmp, int fd)
 
 char	*ft_get_bf_n(char *str)
 {
-	char *line;
-	int	 i;
-	int	 j;
+	char	*line;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;
@@ -53,24 +53,24 @@ char	*ft_get_bf_n(char *str)
 	while (str[j] && str[j] != '\n')
 	{
 		line[j] = str[j];
-		j++; 
+		j++;
 	}
 	if (str[j] == '\n')
 	{
-		line[j] =  '\n';
+		line[j] = '\n';
 		j++;
 	}
 	line[j] = '\0';
 	return (line);
 }
 
-char 	*ft_get_af_n(char *str)
+char	*ft_get_af_n(char *str)
 {
-	char *tmp;
-	int i;
-	int j;
+	char	*tmp;
+	int		i;
+	int		j;
 
-	i = 0; 
+	i = 0;
 	while (str[i] && str[i] != '\n')
 		i++;
 	if (!str[i])
@@ -93,9 +93,9 @@ char 	*ft_get_af_n(char *str)
 
 char	*get_next_line(int fd)
 {
-	static char *tmp;
+	static char	*tmp;
 	char		*line;
-	
+
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	tmp = ft_find_n(tmp, fd);
@@ -109,5 +109,5 @@ char	*get_next_line(int fd)
 	}
 	line = ft_get_bf_n(tmp);
 	tmp = ft_get_af_n(tmp);
-	return (line);	
+	return (line);
 }

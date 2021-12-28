@@ -6,7 +6,7 @@
 /*   By: chilee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 17:02:33 by chilee            #+#    #+#             */
-/*   Updated: 2021/12/23 18:09:30 by chilee           ###   ########.fr       */
+/*   Updated: 2021/12/28 11:29:20 by chilee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	*ft_get_bf_n(char *str)
 		line[j] = str[j];
 		j++;
 	}
-	if(str[j] == '\n')
+	if (str[j] == '\n')
 	{
 		line[j] = '\n';
 		j++;
@@ -70,10 +70,10 @@ char	*ft_get_af_n(char *str)
 	int		i;
 	int		j;
 
-	i= 0;
+	i = 0;
 	while (str[i] && str[i] != '\n')
 		i++;
-	if(!str)
+	if (!str)
 	{
 		free(str);
 		return (NULL);
@@ -81,7 +81,7 @@ char	*ft_get_af_n(char *str)
 	line = (char *)malloc(sizeof(char) * (ft_strlen(str) - i) + 1);
 	i++;
 	j = 0;
-	while ( j < ((int)ft_strlen(str) - i))
+	while (j < ((int)ft_strlen(str) - i))
 	{
 		line[j] = str[i + j];
 		j++;
@@ -93,8 +93,8 @@ char	*ft_get_af_n(char *str)
 
 char	*get_next_line(int fd)
 {
-	static char *tmp[FOPEN_MAX];
-	char	*line;
+	static char	*tmp[FOPEN_MAX];
+	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || fd > FOPEN_MAX)
 		return (NULL);

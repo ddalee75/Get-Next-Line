@@ -6,7 +6,7 @@
 /*   By: chilee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 14:39:02 by chilee            #+#    #+#             */
-/*   Updated: 2021/12/23 17:53:44 by chilee           ###   ########.fr       */
+/*   Updated: 2021/12/28 11:19:11 by chilee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,17 @@ int	main(void)
 {
 	int	fd;
 //	int fd2;
+	int i;
 
-	fd = open("text2.txt", O_RDONLY);
+	i = 0;
+	fd = open("text.txt", O_RDONLY);
 //	fd2 = open("text2.txt", O_RDONLY);
-
-	printf("%s", get_next_line(fd));
-	printf("\n");
-//	printf("%s", get_next_line(fd2));
-//	printf("\n");
-	printf("%s", get_next_line(fd));
-	printf("\n");
-//	printf("%s", get_next_line(fd2));
-//	printf("\n");
-
-	printf("%s", get_next_line(fd));
-//	printf("\n");
+	
+	while (i < 4)
+	{
+		printf("%s", get_next_line(fd));
+//		printf("%s", get_next_line(fd2));
+		i++;
+	}
 	return (0);
-}
+

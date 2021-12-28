@@ -6,7 +6,7 @@
 /*   By: chilee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 15:02:31 by chilee            #+#    #+#             */
-/*   Updated: 2021/12/21 19:50:12 by chilee           ###   ########.fr       */
+/*   Updated: 2021/12/28 11:19:37 by chilee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(const char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -24,7 +24,7 @@ size_t	ft_strlen(const char *str)
 
 int	ft_strchr(char *s, int c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!s)
@@ -32,7 +32,7 @@ int	ft_strchr(char *s, int c)
 	while (s[i])
 	{
 		if (s[i] == (char)c)
-			return (1);	
+			return (1);
 		i++;
 	}
 	return (0);
@@ -40,9 +40,9 @@ int	ft_strchr(char *s, int c)
 
 char	*ft_strdup(char *s)
 {
-	int i;
-	char *dest;
-	
+	int		i;
+	char	*dest;
+
 	dest = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (!dest)
 		return (NULL);
@@ -60,7 +60,7 @@ char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*dest;
 	int		i;
-	int 	j;
+	int		j;
 
 	i = 0;
 	j = 0;
@@ -82,5 +82,5 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	dest[i] = '\0';
 	free(s1);
-	return (dest); 
+	return (dest);
 }
