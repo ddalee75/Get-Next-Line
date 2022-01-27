@@ -12,21 +12,20 @@
 
 #include "get_next_line.h"
 
-int	main(void)
+int main(int argc, char **argv)
 {
-	int	fd;
-//	int fd2;
-	int i;
+    char    *str;
+    int fd;
 
-	i = 0;
-	fd = open("text.txt", O_RDONLY);
-//	fd2 = open("text2.txt", O_RDONLY);
-	
-	while (i < 4)
-	{
-		printf("%s", get_next_line(fd));
-//		printf("%s", get_next_line(fd2));
-		i++;
-	}
+    fd = open(argv[1], O_RDONLY);
+    str = get_next_line(fd);
+    while (str)
+    {
+        printf("%s", str);
+        free(str);
+        str = get_next_line(fd);
+    }
+    free(str);
+}
 	return (0);
 
