@@ -72,9 +72,9 @@ char	*ft_get_af_n(char *str)
 	i = 0;
 	while (str[i] && str[i] != '\n')
 		i++;
-	if (!str[i])
+	if (!str[i])  // pour le cas sur la derniere ligne ou il y \n et buffer size fini sur \n'
 	{
-		free(str);
+		free(str); 
 		return (NULL);
 	}	
 	tmp = malloc(sizeof(char) * (ft_strlen(str) - i) + 1);
@@ -100,9 +100,9 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	tmp = ft_find_n(tmp, fd);
-	if (!tmp)
+	if (!tmp) // pour traiter un fd existe mais vide
 		return (NULL);
-	if (!tmp[0])
+	if (!tmp[0]) // pour traiter  l'appel de gnl plus que la ligne et un fd vide
 	{
 		free(tmp);
 		tmp = NULL;
