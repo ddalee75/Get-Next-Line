@@ -17,7 +17,7 @@ int main(int argc, char **argv)
     char    *str;
     int fd;
 
-    fd = open(argv[1], O_RDONLY);
+    fd = open("txt.txt", O_RDONLY);
     str = get_next_line(fd);
     while (str)
     {
