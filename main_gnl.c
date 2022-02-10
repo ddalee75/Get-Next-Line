@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-int main(int argc, char **argv)
+int main(void)
 {
     char    *str;
     int fd;
