@@ -27,6 +27,7 @@ int main(void)
         str = get_next_line(fd);
     }
     free(str);
+	close(fd);
 }
 	return (0);
 
