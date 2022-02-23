@@ -72,7 +72,7 @@ char	*ft_get_af_n(char *str)
 	i = 0;
 	while (str[i] && str[i] != '\n')
 		i++;
-	if (!str[i])  // pour le cas sur la derniere ligne ou il y \n et buffer size fini sur \n'
+	if (!str[i])  // pour le cas sur la derniere ligne ou il y rien apres et la fin de fichier on sort
 	{
 		free(str); 
 		return (NULL);
